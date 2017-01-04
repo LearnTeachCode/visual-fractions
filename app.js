@@ -23,10 +23,12 @@ makeRectangle(200, 500, 100, 100, color3);
 //makeRectangle(400, 300, 50, 420, color1); 
 
 
-var makeFraction = function(num){
-	for (var i = 0; i<num; i++){
-	makeRectangle(400, 300+i*420/num, 50, 420/num, color1);
+var makeFraction = function(num, den){
+	for (var i = 0; i<den; i++){
+	if (den-num>i) {color1 = "white"} 
+	else {color1 = "red"}
+	makeRectangle(400, 300+i*420/den, 50, 420/den, color1);
 	}	
 };
 
-makeFraction(2);
+makeFraction(7, 10);
