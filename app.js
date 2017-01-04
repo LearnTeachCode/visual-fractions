@@ -16,19 +16,28 @@ var makeRectangle = function(xAxis, yAxis , recWidth, recHeight, color){
 	document.getElementById('svgOne').appendChild(rect);
 };
 
-makeRectangle(200, 300, 100, 100, color1);
-makeRectangle(200, 400, 100, 100, color2);
-makeRectangle(200, 500, 100, 100, color3);
-
-//makeRectangle(400, 300, 50, 420, color1); 
-
-
-var makeFraction = function(num, den){
-	for (var i = 0; i<den; i++){
-	if (den-num>i) {color1 = "white"} 
-	else {color1 = "red"}
-	makeRectangle(400, 300+i*420/den, 50, 420/den, color1);
+var makeFraction = function(numerator, denominator){
+	if (numerator>denominator){
+		var wholeNumber = Math.floor(numerator/denominator);
+		var newNumerator = numerator%denominator;
+		console.log(wholeNumber + " " + newNumerator);
+		for (var k = 0; k<wholeNumber; k++) {
+			for (var j = 0; j<denominator; j++) {
+			makeRectangle(100+k*70, 300+j*420/denominator, 50, 420/denominator, color2);
+			}
+		}
+		for (var l = 0; l<denominator; l++){
+			if (denominator-newNumerator>l) {color1 = "white"} 
+			else {color1 = "red"};
+			makeRectangle(100+(wholeNumber)*70, 300+l*420/denominator, 50, 420/denominator, color1);
+		}
+	} else {
+		for (var i = 0; i<denominator; i++){
+			if (denominator-numerator>i) {color1 = "white"} 
+			else {color1 = "red"};
+			makeRectangle(100, 300+i*420/denominator, 50, 420/denominator, color1);
+		}
 	}	
 };
 
-makeFraction(7, 10);
+makeFraction(14, 5);
