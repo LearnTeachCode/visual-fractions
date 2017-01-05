@@ -51,8 +51,16 @@ var makeFraction = function(numerator, denominator){
 	}	
 };
 
+var removeAllChildren = function(parent) {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
+
 button.addEventListener("click", function(){
 	var enterNumerator = parseInt(document.getElementById("numerator").value);
 	var enterDenominator = parseInt(document.getElementById("denominator").value);
+	var fractionBoxes = document.getElementById("svgOne");
+  removeAllChildren(fractionBoxes);
 	makeFraction(enterNumerator, enterDenominator);
 });
