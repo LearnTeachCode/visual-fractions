@@ -8,8 +8,9 @@ var color3 = "green";
 var defaultHeight = 420;
 var defaultWidth = 50;
 var defaultMargin = defaultWidth + 20;
-var startXAxis = 200;
-var startYAxis = 100;
+var startXAxis = 500;
+var startYAxis = 0;
+var button = document.getElementById("enter");
 
 var makeRectangle = function(xAxis, yAxis , recWidth, recHeight, color){
 	var rect = document.createElementNS(svgns, 'rect');
@@ -22,10 +23,10 @@ var makeRectangle = function(xAxis, yAxis , recWidth, recHeight, color){
 };
 
 var makeFraction = function(numerator, denominator){
+	console.log(numerator + " " + denominator);
 	if (numerator > denominator){
 		var wholeNumber = Math.floor(numerator/denominator);
 		var newNumerator = numerator % denominator;
-		//console.log(wholeNumber + " " + newNumerator);
 		for (var k = 0; k < wholeNumber; k++) {
 			for (var j = 0; j < denominator; j++) {
 			makeRectangle(startXAxis + (k * defaultMargin), 
@@ -50,4 +51,8 @@ var makeFraction = function(numerator, denominator){
 	}	
 };
 
-makeFraction(21, 11);
+button.addEventListener("click", function(){
+	var enterNumerator = parseInt(document.getElementById("numerator").value);
+	var enterDenominator = parseInt(document.getElementById("denominator").value);
+	makeFraction(enterNumerator, enterDenominator);
+});
