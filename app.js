@@ -8,7 +8,7 @@ var color3 = "green";
 var defaultHeight = 420;
 var defaultWidth = 50;
 var defaultMargin = defaultWidth + 20;
-var startXAxis = 500;
+var startXAxis = 0;
 var startYAxis = 0;
 var button = document.getElementById("enter");
 

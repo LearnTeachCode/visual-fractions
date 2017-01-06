@@ -1,4 +1,12 @@
 rect {
-	stroke: black;
-	stroke-width: 2px;
+  stroke: black;
+  stroke-width: 2px;
+}
+#user-interface {
+  width : 300px;
+  float : left;
+}
+#svgOne {
+margin-top: 50px;
+float : right;
 }
