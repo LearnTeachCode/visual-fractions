@@ -57,15 +57,9 @@ var removeAllChildren = function(parent) {
   }
 };
 
-var checkIfWholeNumber = function(num){
+var checkIfNotWholeNumber = function(num){
 	var result = /\D/.test(num);
-	if (result) {
-		console.log("false, this is not a whole number");
-		return false;
-	} else {
-		console.log("true this is a whole number");
-		return true;
-	}
+	return result;
 };
 
 button.addEventListener("click", function(){
@@ -74,20 +68,20 @@ button.addEventListener("click", function(){
 	var enterNumerator = parseInt(numeratorValue);
 	var enterDenominator = parseInt(denominatorValue);
 	var fractionBoxes = document.getElementById("svgOne");
-
-	if (checkIfWholeNumber(numeratorValue) && checkIfWholeNumber(denominatorValue)) { 
-		removeAllChildren(fractionBoxes);
-		makeFraction(enterNumerator, enterDenominator);
-	} 
-	else if(numeratorValue < 0 || numeratorValue > 100){
-	  document.getElementById("message").innerText = "Please enter a whole number between 0 and 100.";
-	}
-	else if(denominatorValue < 1 || denominatorValue > 100){
-	  document.getElementById("message").innerText = "Please enter a whole number between 1 and 100.";
-	}
-	else {
-		document.getElementById("message").innerText = "Please enter whole numbers only.";
-	}
 	
+			removeAllChildren(fractionBoxes);
+			document.getElementById("message").innerText = "";
+		
+	if(checkIfNotWholeNumber(numeratorValue) || checkIfNotWholeNumber(denominatorValue) || 
+			numeratorValue === "" || denominatorValue === "") {
+		document.getElementById("message").innerText = "Please enter whole numbers only.";
+		}	else if (numeratorValue < 0 || numeratorValue > 100){
+	  document.getElementById("message").innerText = "Please enter a whole number between 0 and 100.";
+	  } else if (denominatorValue < 1 || denominatorValue > 100){
+	  document.getElementById("message").innerText = "Please enter a whole number between 1 and 100.";
+		} else {
+		makeFraction(enterNumerator, enterDenominator);
+		}
+
   
 });
